@@ -27,7 +27,12 @@ namespace Examen_1__23130579
                 for (int i = 0; i < ren.Length - 1; i++)
                 {
                     int años = int.Parse(ren[i].Substring(4,2).ToString());
+                    if (años >= 0 && años <= 25)
+                        años -= 25;
+                    else
+                        años -= 125;
 
+                    años = años * (-1);
 
                     String sexo = ren[i].Substring(10,1);
                     if (sexo == "M")
@@ -39,7 +44,7 @@ namespace Examen_1__23130579
                         sexo = "Hombre";
                     }
                     
-                    dgvCalculo.Rows.Add(años,sexo);
+                    dgvCalculo.Rows.Add(años+" años",sexo);
 
                     string[] linea = ren[i].Split(",");
                     for (int j = 0; j < linea.Length; j++)
